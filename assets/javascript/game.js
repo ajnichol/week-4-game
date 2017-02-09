@@ -1,49 +1,129 @@
-
 $(document).ready(function() {
+	//game object
+	var game = {
+		totalScore: 0,
+		userTotal: 0,
+		wins: 0,
+		losses: 0,
+		computersChoice: 0,
+		darkBlueCrystal: 0,
+		greenCrystal: 0,
+		purpleCrystal: 0,
+		yellowCrystal: 0,
 
-	var number = parseInt("");
-	var totalScore = 0;
-	var wins = 0;
-	$("#wins").html(wins);
-	var losses = 0;
-	$("#losses").html(losses);
-	var lockGame = false;
-	var computersChoice = Math.floor(Math.random() * 120) + 19;
+		//At game start these are the random values the crystals will have and the random number the computer chooses
+		initialize: function() {
 
-	function resetGame() {
+			this.computersChoice = this.randomValue(19,120);
+			this.darkBlueCrystal = this.randomValue(1,12);
+			this.greenCrystal = this.randomValue(1,12);
+			this.purpleCrystal = this.randomValue(1,12);
+			this.yellowCrystal = this.randomValue(1,12);
+			$("#wins").html(this.wins);
+			$("#losses").html(this.losses);
+			$("#random-number").html(this.computersChoice);
 
-		computersChoice = Math.floor(Math.random() * 120) + 19;
-		number = computersChoice;
-		totalScore = 0;
-	}
+		},
 
-	number = computersChoice;
+		//create reset function so that when the user wins or losses everything resest
+		resetGame: function() {
 
-	$("#random-number").append(number);
+			this.initialize();
+			this.totalScore = 0;
+			$("#total-score").html(this.totalScore);
+		},
 
-	$("button").on("click", function() {
-		
-		usersChoice = $(this).attr("value");
+		randomValue: function(min, max) {
+			return Math.floor(Math.random() * (max-min) + min);
 
-		usersChoice = parseInt(usersChoice);
+		},
 
-		$("#total-score").html(totalScore += usersChoice);
+		userWins: function() {
+			this.wins++;
+			$("#wins").text(this.wins);
+			this.resetGame();
+		},
 
-		if(totalScore > computersChoice) {
+		userLosses: function() {
 
-			losses++;
-			$("#losses").html(losses);
+			this.losses++;
+			$("#losses").text(this.losses);
+			this.resetGame();
+		},
 
+	};
+
+	game.randomValue();
+
+	game.initialize();
+	
+
+	$("#darkBlueCrystal").on("click", function() {
+
+		game.totalScore += game.darkBlueCrystal;
+
+		$("#total-score").text(game.totalScore);
+
+		if(game.totalScore === game.computersChoice) {
+
+			game.userWins();
 		}
 
-		if(totalScore === computersChoice) {
+		else if(game.totalScore > game.computersChoice) {
 
-			wins++;
-			$("#wins").html(wins);
+			game.userLosses();
+		}
+	});
 
+	$("#greenCrystal").on("click", function() {
+
+		game.totalScore += game.greenCrystal;
+
+		$("#total-score").text(game.totalScore);
+
+		if(game.totalScore === game.computersChoice) {
+
+			game.userWins();
+		}
+		else if(game.totalScore > game.computersChoice) {
+
+			game.userLosses();
+		}
+	});
+
+	$("#purpleCrystal").on("click", function() {
+
+		game.totalScore += game.purpleCrystal;
+
+		$("#total-score").text(game.totalScore);
+
+		if(game.totalScore === game.computersChoice) {
+			game.userWins();
+
+		}
+		else if(game.totalScore > game.computersChoice) {
+
+			game.userLosses();
 		}
 
 	});
 
-	
+	$("#yellowCrystal").on("click", function() {
+
+		game.totalScore += game.yellowCrystal;
+
+		$("#total-score").text(game.totalScore);
+
+		if(game.totalScore === game.computersChoice) {
+			game.userWins();
+		}
+		else if(game.totalScore > game.computersChoice) {
+
+			game.userLosses();
+		}
+
+	});
+
+
 });
+
