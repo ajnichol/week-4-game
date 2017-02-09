@@ -6,7 +6,7 @@ $(document).ready(function() {
 		wins: 0,
 		losses: 0,
 		computersChoice: 0,
-		darkBlueCrystal: 0,
+		blueCrystal: 0,
 		greenCrystal: 0,
 		purpleCrystal: 0,
 		yellowCrystal: 0,
@@ -15,13 +15,14 @@ $(document).ready(function() {
 		initialize: function() {
 
 			this.computersChoice = this.randomValue(19,120);
-			this.darkBlueCrystal = this.randomValue(1,12);
+			this.blueCrystal = this.randomValue(1,12);
 			this.greenCrystal = this.randomValue(1,12);
 			this.purpleCrystal = this.randomValue(1,12);
 			this.yellowCrystal = this.randomValue(1,12);
 			$("#wins").html(this.wins);
 			$("#losses").html(this.losses);
 			$("#random-number").html(this.computersChoice);
+			$("#totalScore").html(this.totalScore);
 
 		},
 
@@ -30,20 +31,24 @@ $(document).ready(function() {
 
 			this.initialize();
 			this.totalScore = 0;
-			$("#total-score").html(this.totalScore);
+			$("#totalScore").html(this.totalScore);
 		},
 
+		//fucntion that chooses a random value for each crystal and computer
 		randomValue: function(min, max) {
-			return Math.floor(Math.random() * (max-min) + min);
 
+			return Math.floor(Math.random() * (max-min) + min);
 		},
 
+		//function that increases the users score if they win
 		userWins: function() {
+
 			this.wins++;
 			$("#wins").text(this.wins);
 			this.resetGame();
 		},
 
+		//function that decreases the users score if they lose
 		userLosses: function() {
 
 			this.losses++;
@@ -53,22 +58,26 @@ $(document).ready(function() {
 
 	};
 
+	//calling upon my randomValue function to intialize the game
 	game.randomValue();
 
+	//once I call my randomValue function my intialize game function is utilized
 	game.initialize();
 	
+	//on click of crystal we increase the random value and add it to totalscore 
+	$("#blueCrystal").on("click", function() {
 
-	$("#darkBlueCrystal").on("click", function() {
+		game.totalScore += game.blueCrystal;
 
-		game.totalScore += game.darkBlueCrystal;
+		$("#totalScore").text(game.totalScore);
 
-		$("#total-score").text(game.totalScore);
-
+		//if user adds the crystal's value to equal the computer's number we call our user wins function to increase their wins
 		if(game.totalScore === game.computersChoice) {
 
 			game.userWins();
 		}
 
+		//if user adds the crystal's value and it is greater than the computer's number we increase their losses
 		else if(game.totalScore > game.computersChoice) {
 
 			game.userLosses();
@@ -79,7 +88,7 @@ $(document).ready(function() {
 
 		game.totalScore += game.greenCrystal;
 
-		$("#total-score").text(game.totalScore);
+		$("#totalScore").text(game.totalScore);
 
 		if(game.totalScore === game.computersChoice) {
 
@@ -95,11 +104,11 @@ $(document).ready(function() {
 
 		game.totalScore += game.purpleCrystal;
 
-		$("#total-score").text(game.totalScore);
+		$("#totalScore").text(game.totalScore);
 
 		if(game.totalScore === game.computersChoice) {
-			game.userWins();
 
+			game.userWins();
 		}
 		else if(game.totalScore > game.computersChoice) {
 
@@ -112,9 +121,10 @@ $(document).ready(function() {
 
 		game.totalScore += game.yellowCrystal;
 
-		$("#total-score").text(game.totalScore);
+		$("#totalScore").text(game.totalScore);
 
 		if(game.totalScore === game.computersChoice) {
+
 			game.userWins();
 		}
 		else if(game.totalScore > game.computersChoice) {

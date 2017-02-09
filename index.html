@@ -18,7 +18,7 @@
 
 </head>
 
-<body>
+<body background="assets/images/wood_pattern.png">
 
 <header>
 
@@ -26,7 +26,7 @@
 
 		<div class="row">
 
-			<div class="col-xs-12 col-sm-12 col-md-12">
+			<div class="col-xs-12 col-sm-12 col-md-12 spacing bottomBorder">
 
 				<h1>CrystalsCollector!</h1>
 
@@ -42,7 +42,7 @@
 
 	<div class="row">
 
-		<div class="col-xs-12 col-sm-12 col-md-12">
+		<div class="col-xs-12 col-sm-12 col-md-12 spacing">
 
 			<p>You will be given a random number at the start of the game.</p>
 
@@ -64,17 +64,17 @@
 
 	<div class="row">
 
-		<div class="col-xs-6 col-sm-6 col-md-6">
+		<div class="col-xs-6 col-sm-6 col-md-6 spacing bottomBorder">
 
 			<h1 id="random-number"></h1>
 
 		</div>
 
-		<div class="col-xs-6 col-sm-6 col-md-6">
+		<div class="col-xs-6 col-sm-6 col-md-6 spacing" id="scoreBoard">
 
-			<p>Wins:<span id="wins"></span></p>
+			<p>Wins: <span id="wins"></span></p>
 
-			<p>Losses:<span id="losses"></span></p>
+			<p>Losses: <span id="losses"></span></p>
 
 		</div>
 
@@ -86,25 +86,25 @@
 
 	<div class="row">
 
-		<div class="col-xs-3 col-sm-3 col-md-3">
+		<div class="col-xs-3 col-sm-3 col-md-3 spacing">
 
-			<button class="button" id="darkBlueCrystal"><img src="assets/images/DarkBlueCrystal.png" alt="Dark Blue Crystal"></button>
+			<button class="button" id="blueCrystal"><img src="assets/images/DarkBlueCrystal.png" alt="Dark Blue Crystal"></button>
 
 		</div>
 
-		<div class="col-xs-3 col-sm-3 col-md-3">
+		<div class="col-xs-3 col-sm-3 col-md-3 spacing">
 
 			<button class="button" id="greenCrystal"><img src="assets/images/GreenCrystal.png" alt=" Green Crystal"></button>
 
 		</div>
 
-		<div class="col-xs-3 col-sm-3 col-md-3">
+		<div class="col-xs-3 col-sm-3 col-md-3 spacing">
 
 			<button class="button" id="purpleCrystal"><img src="assets/images/PurpleCrystal.png" alt="Purple Crystal"></button>
 
 		</div>
 
-		<div class="col-xs-3 col-sm-3 col-md-3">
+		<div class="col-xs-3 col-sm-3 col-md-3 spacing">
 
 			<button class="button" id="yellowCrystal"><img src="assets/images/YellowCrystal.png" alt="Yellow Crystal"></button>
 
@@ -118,13 +118,11 @@
 
 	<div class="row">
 
-		<div class="col-xs-12 col-sm-12 col-md-12">
+		<div class="col-xs-12 col-sm-12 col-md-12 spacing">
 
-			<p> Your total score is:</p>
+			<p><b>Your total score is: </b></p>
 
-			<br><br>
-
-			<h2 id="total-score"></h2>
+			<h1 id="totalScore"></h1>
 
 		</div>
 
@@ -132,7 +130,19 @@
 
 </div>
 
+<div class="container">
 
+	<div class="row">
+
+		<div class="col-xs-12 col-sm-12 col-md-12 spacing" id="footer">
+
+			<footer>Alex Nichols -- All Rights Reserved -- 2017</footer>
+
+		</div>
+
+	</div>
+
+</div>
 
 <script type="text/javascript" src="assets/javascript/game.js"></script>
 

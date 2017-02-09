@@ -1,0 +1,32 @@
+
+.bottomBorder{
+	border-bottom: 2px solid black;
+	
+}
+
+p{
+	font-size: 18px;
+	font-weight: normal;
+}
+
+#scoreBoard{
+	font-weight: bold;
+}
+
+#wins{
+	font-weight: bold;
+}
+
+#losses{
+	font-weight: bold;
+}
+
+.spacing{
+	padding: 10px 0 10px 0;
+}
+
+footer{
+	text-align: center;
+	border-top: 2px solid black;
+	padding-top: 10px;
+}
